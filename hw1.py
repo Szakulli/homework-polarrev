@@ -28,9 +28,9 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     :return: Number of cases on a given date as an integer
     """
     
-    # Your code goes here (remove pass)
-    pass
-
+    date = str(month)+'/'+str(day)+'/'+str(year)
+    
+    return confirmed_cases.loc['Poland', date]
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
@@ -49,7 +49,7 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
 
     # Your code goes here (remove pass)
-    pass
+    confirmed_cases[["Province/State", "Country/Region", data]].sort_values(by=data).tail(5)
 
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
