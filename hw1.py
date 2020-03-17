@@ -48,7 +48,9 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
 
     # Your code goes here (remove pass)
     data = f"{month}/{day}/{year%2000}"
-    return confirmed_cases[["Province/State", "Country/Region", data]].sort_values(by=data).tail(5)
+    grouped_cases=confirmed_cases.groupby("Country/Region").sum()
+    sorted_cases=grouped_cases.sort_values(by=[data], ascending=False).head(5)
+    return list(sorted_cases.index)
 
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
